@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Energy Conservation</title>
+
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        html{
+            scroll-behavior: smooth;
+        }
+
+        body{
+            background-color: #f4f4f4;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .navbar{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #021b3a;
+            padding: 20px 50px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo{
+            color: #49ffcf;
+            font-size: 40px;
+            font-weight: bold;
+        }
+
+        .nav-links{
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a{
+            text-decoration: none;
+            color: white;
+            font-size: 22px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover{
+            color: #49ffcf;
+        }
+
+        /* ================= HERO SECTION ================= */
+
+        .hero{
+            height: 500px;
+
+            background:
+            linear-gradient(rgba(0,0,0,0.6),
+            rgba(0,0,0,0.6)),
+
+            url("https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?q=80&w=1400&auto=format&fit=crop");
+
+            background-size: cover;
+            background-position: center;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content h1{
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p{
+            font-size: 24px;
+            width: 70%;
+            margin: auto;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .hero-content button{
+            padding: 12px 25px;
+            border: none;
+            background-color: #49ffcf;
+            color: black;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .hero-content button:hover{
+            background-color: white;
+            transform: scale(1.05);
+        }
+
+        /* ================= COMMON SECTION ================= */
+
+        section{
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        section h2{
+            font-size: 50px;
+            margin-bottom: 30px;
+            color: #021b3a;
+        }
+
+        section p{
+            font-size: 24px;
+            line-height: 1.6;
+        }
+
+        /* ================= PROBLEM SECTION ================= */
+
+        .problem button{
+            margin-top: 25px;
+            padding: 12px 22px;
+            border: none;
+            background-color: #021b3a;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .problem button:hover{
+            background-color: #03356d;
+        }
+
+        #problemInfo{
+            margin-top: 25px;
+            font-size: 22px;
+            color: #333;
+        }
+
+        /* ================= THEORY SECTION ================= */
+
+        .theory-box{
+            width: 85%;
+            margin: auto;
+            background-color: #e9e9e9;
+            padding: 40px;
+            border-radius: 10px;
+        }
+
+        .theory-box p{
+            margin-bottom: 20px;
+        }
+
+        .theory-box button{
+            margin-top: 15px;
+            padding: 12px 22px;
+            border: none;
+            background-color: #021b3a;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .theory-box button:hover{
+            background-color: #03356d;
+        }
+
+        #theoryInfo{
+            margin-top: 25px;
+            font-size: 22px;
+            color: #333;
+        }
+
+        /* ================= SOLUTIONS ================= */
+
+        .solution-container{
+            width: 85%;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+            gap: 40px;
+        }
+
+        .card{
+            background-color: #e9e9e9;
+            padding: 35px 20px;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        .card:hover{
+            transform: translateY(-10px);
+        }
+
+        .card h3{
+            font-size: 32px;
+            margin-bottom: 15px;
+            color: #021b3a;
+        }
+
+        .card p{
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+
+        .card button{
+            padding: 10px 18px;
+            border: none;
+            background-color: #021b3a;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        .card button:hover{
+            background-color: #03356d;
+        }
+
+        .card-info{
+            font-size: 20px;
+            color: #333;
+        }
+
+        /* ================= TIPS BUTTON ================= */
+
+        .tips-btn{
+            margin-top: 50px;
+            padding: 12px 22px;
+            border: none;
+            background-color: #021b3a;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .tips-btn:hover{
+            background-color: #03356d;
+        }
+
+        #tipsBox{
+            margin-top: 25px;
+            font-size: 22px;
+            line-height: 2;
+        }
+
+        /* ================= CONTACT SECTION ================= */
+
+        .contact{
+            background-color: #021b3a;
+            color: white;
+        }
+
+        .contact h2{
+            color: white;
+        }
+
+        .contact p{
+            margin: 10px 0;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer{
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 18px;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media(max-width:768px){
+
+            .navbar{
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .nav-links{
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-content h1{
+                font-size: 38px;
+            }
+
+            .hero-content p{
+                width: 90%;
+                font-size: 18px;
+            }
+
+            section h2{
+                font-size: 38px;
+            }
+
+            section p{
+                font-size: 20px;
+            }
+
+            .card h3{
+                font-size: 28px;
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="navbar">
+
+        <div class="logo">EnergySave</div>
+
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#problem">Problem</a></li>
+            <li><a href="#theory">Theory</a></li>
+            <li><a href="#solutions">Solutions</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+    </nav>
+
+    <!-- ================= HERO SECTION ================= -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <h1>Save Energy Save Future</h1>
+
+            <p>
+                Smart mechanical systems reduce energy waste
+                and improve industrial efficiency.
+            </p>
+
+            <button onclick="learnMore()">
+                Learn More
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- ================= PROBLEM SECTION ================= -->
+
+    <section class="problem" id="problem">
+
+        <h2>Problem</h2>
+
+        <p>
+            Excessive energy consumption in mechanical systems
+            increases operational costs and environmental pollution.
+        </p>
+
+        <button onclick="showProblem()">
+            Show More Problem Info
+        </button>
+
+        <div id="problemInfo"></div>
+
+    </section>
+
+    <!-- ================= THEORY SECTION ================= -->
+
+    <section class="theory" id="theory">
+
+        <h2>Theory</h2>
+
+        <div class="theory-box">
+
+            <p>
+                Energy conservation means reducing unnecessary
+                energy consumption while maintaining performance
+                and productivity.
+            </p>
+
+            <p>
+                Industries use motors, pumps, compressors,
+                boilers, and manufacturing machines that consume
+                large amounts of electricity.
+            </p>
+
+            <p>
+                Poor maintenance, old machines, and heat loss
+                increase power wastage in industries and workshops.
+            </p>
+
+            <p>
+                Energy-efficient technologies such as efficient motors,
+                automation systems, insulation, and heat recovery
+                methods help reduce electricity consumption.
+            </p>
+
+            <button onclick="showTheory()">
+                Read More
+            </button>
+
+            <div id="theoryInfo"></div>
+
+        </div>
+
+    </section>
+
+    <!-- ================= SOLUTIONS SECTION ================= -->
+
+    <section class="solutions" id="solutions">
+
+        <h2>Solutions</h2>
+
+        <div class="solution-container">
+
+            <!-- CARD 1 -->
+
+            <div class="card">
+
+                <h3>Efficient Motors</h3>
+
+                <p>
+                    Use energy-efficient motors.
+                </p>
+
+                <button onclick="motorInfo()">
+                    Show More
+                </button>
+
+                <div id="motorText" class="card-info"></div>
+
+            </div>
+
+            <!-- CARD 2 -->
+
+            <div class="card">
+
+                <h3>Maintenance</h3>
+
+                <p>
+                    Regular servicing reduces losses.
+                </p>
+
+                <button onclick="maintenanceInfo()">
+                    Show More
+                </button>
+
+                <div id="maintenanceText" class="card-info"></div>
+
+            </div>
+
+            <!-- CARD 3 -->
+
+            <div class="card">
+
+                <h3>Automation</h3>
+
+                <p>
+                    Smart control systems improve efficiency.
+                </p>
+
+                <button onclick="automationInfo()">
+                    Show More
+                </button>
+
+                <div id="automationText" class="card-info"></div>
+
+            </div>
+
+            <!-- CARD 4 -->
+
+            <div class="card">
+
+                <h3>Heat Recovery</h3>
+
+                <p>
+                    Reuse waste heat effectively.
+                </p>
+
+                <button onclick="heatInfo()">
+                    Show More
+                </button>
+
+                <div id="heatText" class="card-info"></div>
+
+            </div>
+
+        </div>
+
+        <!-- TIPS BUTTON -->
+
+        <button class="tips-btn" onclick="showTips()">
+            Show Energy Saving Tips
+        </button>
+
+        <div id="tipsBox"></div>
+
+    </section>
+
+    <!-- ================= CONTACT SECTION ================= -->
+
+    <section class="contact" id="contact">
+
+        <h2>Contact</h2>
+
+        <p>Email : energysave@gmail.com</p>
+
+        <p>Phone : +91 9876543210</p>
+
+        <p>Location : Maharashtra, India</p>
+
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        © 2026 EnergySave | All Rights Reserved
+
+    </footer>
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        function learnMore(){
+
+            alert(
+                "Energy conservation helps save electricity, reduce pollution, and improve industrial efficiency."
+            );
+        }
+
+        function showProblem(){
+
+            document.getElementById("problemInfo").innerHTML =
+
+            "Old machines, poor maintenance, heat loss, and inefficient systems increase electricity consumption in industries and mechanical systems.";
+        }
+
+        function showTheory(){
+
+            document.getElementById("theoryInfo").innerHTML =
+
+            "Energy conservation is important for sustainable development. Efficient systems reduce energy waste, lower operating cost, increase machine life, and protect the environment for future generations.";
+        }
+
+        function motorInfo(){
+
+            document.getElementById("motorText").innerHTML =
+
+            "Efficient motors consume less power, reduce heat generation, and improve overall machine performance.";
+        }
+
+        function maintenanceInfo(){
+
+            document.getElementById("maintenanceText").innerHTML =
+
+            "Regular lubrication, cleaning, and servicing reduce energy losses and increase equipment life.";
+        }
+
+        function automationInfo(){
+
+            document.getElementById("automationText").innerHTML =
+
+            "Automation systems use sensors and smart controls to reduce unnecessary electricity consumption.";
+        }
+
+        function heatInfo(){
+
+            document.getElementById("heatText").innerHTML =
+
+            "Waste heat from industries can be reused for heating water, air, and industrial processes.";
+        }
+
+        function showTips(){
+
+            document.getElementById("tipsBox").innerHTML =
+
+            `
+            ✔ Turn off unused machines.<br><br>
+
+            ✔ Use LED lighting systems.<br><br>
+
+            ✔ Maintain machines regularly.<br><br>
+
+            ✔ Install energy monitoring systems.<br><br>
+
+            ✔ Use renewable energy resources.<br><br>
+
+            ✔ Reduce heat loss using insulation.
+            `;
+        }
+
+    </script>
+
+</body>
+
+</html>
